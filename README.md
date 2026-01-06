@@ -17,3 +17,23 @@ For each step of the Spec Kit SDLC a separate commit was made so you can follow 
 ## Prompt/command log
 The following prompts and/or commands were used to generate the code in this repository using GitHub Copilot.
 
+### Step 0: Initialize project using Specify
+Specify is a CLI tool that basically does nothing but provide a nice console dialog to download the right templates for your combination of AI Agent and programming language and makes them executable. I used the persistent installation and initialized this repository using the following command:
+
+```shell
+specify init --here --ai copilot --script sh
+```
+
+This creates the following folders and files:
+```text
+./
+├─ .github/                 # Directory containing GitHub Copilot specific configuration files (this directory will be named differently for other AI Agents)
+│  ├─ agents/               # AI agent instructions for each step of the Spec Kit SDLC on how to handle the user input
+│  ├─ prompts/              # Prompts for each step of the Spec Kit SDLC. The files are needed so the AI Agent can reference them during generation.
+├─ .specify/                # Directory containing Specify related configuration files
+│  ├─ memory/               # Memory files for each step of the Spec Kit SDLC to help the AI Agent remember previous steps
+│  │  ├─ constitution.md    # Spec Kit a blank template for a constitution file defining the principles and guidelines for the AI Agent during the SDLC
+│  ├─ scripts/              # Directory containing shell scripts to automate the Spec Kit SDLC steps
+│  │  ├─ bash/              # Bash scripts for each step of the Spec Kit SDLC
+│  ├─ templates/            # Directory containing templates for each step of the Spec Kit SDLC
+```
