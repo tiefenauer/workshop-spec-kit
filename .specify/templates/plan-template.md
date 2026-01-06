@@ -31,7 +31,10 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+The plan MUST reference `.specify/memory/constitution.md` and demonstrate that
+the proposed implementation meets the minimal deliverables, required page
+basics, build/deploy guidance, and security rules defined in the Constitution.
+Provide a short PASS/FAIL checklist in this section before progressing.
 
 ## Project Structure
 

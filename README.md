@@ -37,3 +37,14 @@ This creates the following folders and files:
 │  │  ├─ bash/              # Bash scripts for each step of the Spec Kit SDLC
 │  ├─ templates/            # Directory containing templates for each step of the Spec Kit SDLC
 ```
+
+### Step 1: Define Constitution
+I used the following prompt to generate the constitution for this project:
+
+```
+/speckit.constitution Fill the constitution with the bare minimum requirements for a static web app based on the template
+```
+
+This prompte did the following:
+- Filled the blank constitution template file at `./specify/memory/constitution.md` with meaningful content for a static web app project
+- Changed `./speecify/templates/plan-template.md` to reference the constitution check
