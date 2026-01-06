@@ -90,3 +90,22 @@ This prompt did the following:
 - created the schema for the episode data model at `./specs/001-episodes-showcase/episode.schema.md` based on the episode data in `./site/data/episodes.json`
 
 Note: like in the previous step the AI Agent created a task list in the plan file. This is not intended behavior of the `/speckit.plan` command but rather a side-effect of the AI Agent trying to be helpful.  I deleted the task list from the plan file to keep things clean.
+
+### Step 4: Task Breakdown
+I used the following prompt to generate the task breakdown for this project:
+
+```shell
+/speckit.tasks break this down into tasks
+```
+
+This prompt did the following:
+- created the task list file at `./specs/001-episodes-showcase/tasks.md based on the tasks identified by the AI Agent from the specification and plan files. The file is based on the template at .specify/templates/tasks-template.md. Each task contains:
+  - A unique identifier
+  - A short title
+  - A description
+  - Acceptance criteria
+  - Estimated effort in story points
+- Tasks are grouped into logical phases:
+- Phase 1: Setup Project Structure
+- Phase 2: Implement Core Features
+- Phase 3ff: User Stories from the specification
