@@ -74,3 +74,19 @@ This command did the following:
 Note how there are no technical details in the specification. This is not in scope with the absraction level of the specification. Technical details will be added in the next step during the planning phase.
 
 Note: Funnily this prompt already created a file `./site/tasks.md` with a task list. This is not intended behavior of the `/speckit.specify` command but rather a side-effect of the AI Agent trying to be helpful. The correct place for the task list is in the next step during the task breakdown phase. I deleted the file for now to keep things clean.
+
+### Step 3: Plan
+
+I used the following prompt to generate the implementation plan for this project:
+
+```shell
+/speckit.plan I am going to use Next.js with static site configuration, no databases - data is embedded in the content for the mock episodes. Site is reponsive and ready for mobile.
+```
+
+This prompt did the following:
+- created the plan file at `./specs/001-episodes-showcase/plan.md based on the template at .specify/templates/plan-template.md
+- filled in the Technical Context section with relevant technical details based on the prompt
+- Performed a constitution check and added a PASS checklist to the Constitution Check section
+- created the schema for the episode data model at `./specs/001-episodes-showcase/episode.schema.md` based on the episode data in `./site/data/episodes.json`
+
+Note: like in the previous step the AI Agent created a task list in the plan file. This is not intended behavior of the `/speckit.plan` command but rather a side-effect of the AI Agent trying to be helpful.  I deleted the task list from the plan file to keep things clean.
