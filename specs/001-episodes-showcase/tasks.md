@@ -21,7 +21,7 @@ Notes and assumptions
 
 Purpose: Project initialization and base structure to support static SSG pages, styling, and dev scripts.
 
-- [ ] T001 [P] Initialize Next.js + package.json scripts and dev scripts — modify `/package.json`
+- [x] T001 [P] Initialize Next.js + package.json scripts and dev scripts — modify `/package.json`
   - Goal: Add Next.js, React, and scripts: dev/build/start/test/lint.
   - Files: `/package.json`
   - Implementation notes: Add entries for "dev": "next dev", "build": "next build", "start": "next start", "test": "jest", "lint": "next lint". Keep versions flexible; prefer caret-pinned latest stable versions.
@@ -29,10 +29,10 @@ Purpose: Project initialization and base structure to support static SSG pages, 
   - Dependencies: none
   - Success criteria: `package.json` contains required scripts and dependency list.
   - QA checklist:
-    - [ ] package.json has "dev" and "build" scripts
-    - [ ] `npm run dev` starts Next dev server locally (manual smoke)
+    - [x] package.json has "dev" and "build" scripts
+    - [x] `npm run dev` starts Next dev server locally (manual smoke)
 
-- [ ] T002 [P] Add dependency list (dev & prod) to `/package.json` for Next.js, React, Tailwind, Jest, RTL, Playwright
+- [x] T002 [P] Add dependency list (dev & prod) to `/package.json` for Next.js, React, Tailwind, Jest, RTL, Playwright
   - Goal: Ensure repository manifest lists required dependencies: next, react, react-dom, typescript, tailwindcss, postcss, autoprefixer, jest, @testing-library/react, jest-axe (optional), playwright (optional).
   - Files: `/package.json`
   - Implementation notes: Dev vs prod packages: testing packages should be devDependencies. Keep install command separate in implementation but list here as package.json edits.
@@ -40,10 +40,10 @@ Purpose: Project initialization and base structure to support static SSG pages, 
   - Dependencies: T001
   - Success criteria: Dependencies present in package.json and `npm install` completes (manual).
   - QA checklist:
-    - [ ] `npm install` completes without errors
-    - [ ] node_modules contains next and tailwind packages
+    - [x] `npm install` completes without errors
+    - [x] node_modules contains next and tailwind packages
 
-- [ ] T003 Configure Tailwind + PostCSS and global stylesheet at `/tailwind.config.js`, `/postcss.config.js`, `/site/styles/globals.css`
+- [x] T003 Configure Tailwind + PostCSS and global stylesheet at `/tailwind.config.js`, `/postcss.config.js`, `/site/styles/globals.css`
   - Goal: Provide Tailwind base, utilities, and global CSS imports.
   - Files: `/tailwind.config.js`, `/postcss.config.js`, `/site/styles/globals.css`
   - Implementation notes: Use recommended Tailwind setup (content pointing to `pages/**/*.{js,ts,tsx}` and `site/components/**/*.{js,ts,tsx}`); create `globals.css` with Tailwind base, components, utilities imports.
@@ -126,7 +126,7 @@ Purpose: Core code modules and utilities shared across all stories (data loader,
     - [ ] Nav contains links to `/`, `/episodes`, `/about`, `/faq`
     - [ ] Page head contains `meta[name="description"]` after visiting a page
 
-- [ ] T010 Setup basic test config: `/jest.config.js`, `/jest.setup.ts`, `/tests` folder, and add test script in `/package.json`
+- [x] T010 Setup basic test config: `/jest.config.js`, `/jest.setup.ts`, `/tests` folder, and add test script in `/package.json`
   - Goal: Provide minimal Jest + React Testing Library configuration and sample test runner.
   - Files: `/jest.config.js`, `/jest.setup.ts`, `/tests/.keep`
   - Implementation notes: Configure `jest` for js/tsx using `ts-jest` or Babel as preferred. Add `test` script in package.json (see T001).
@@ -161,7 +161,7 @@ Independent Test: Visit `/`, confirm a featured episode card with image/title/bl
 
 ### Implementation tasks (US1)
 
-- [ ] T012 [US1] Create `site/components/FeaturedCard.tsx` (featured episode card) — file `/site/components/FeaturedCard.tsx`
+- [x] T012 [US1] Create `site/components/FeaturedCard.tsx` (featured episode card) — file `/site/components/FeaturedCard.tsx`
   - Goal: Visual card used in hero with image, title, blurb, publish date, duration and Play/View buttons.
   - Files: `/site/components/FeaturedCard.tsx`
   - Implementation notes: Accept `episode` prop (Episode). Use `alt` fallback: `Episode image: ${title}`. Provide Play button with keyboard accessible attributes (role/button, aria-pressed etc.).
@@ -172,7 +172,7 @@ Independent Test: Visit `/`, confirm a featured episode card with image/title/bl
     - [ ] Image element has non-empty `alt` attribute (fallback if missing)
     - [ ] Play button is reachable via Tab and activatable via Enter/Space
 
-- [ ] T013 [P] [US1] Create `site/components/Player.tsx` (mock player) — file `/site/components/Player.tsx`
+- [x] T013 [P] [US1] Create `site/components/Player.tsx` (mock player) — file `/site/components/Player.tsx`
   - Goal: Inline player UI that plays provided `audioUrl` (mock) and displays current time / duration; supports keyboard controls.
   - Files: `/site/components/Player.tsx`
   - Implementation notes: Player can use HTMLAudioElement when available; for MVP show play/pause state toggle and time display. Ensure `role="region"` and aria-labeling.
@@ -183,7 +183,7 @@ Independent Test: Visit `/`, confirm a featured episode card with image/title/bl
     - [ ] Play toggles the UI to "playing" state (DOM)
     - [ ] Player region has accessible name and keyboard operable controls
 
-- [ ] T014 [US1] Implement landing page `/pages/index.tsx` using `getStaticProps` reading `/site/data/episodes.json` and rendering `FeaturedCard` — file `/pages/index.tsx`
+- [x] T014 [US1] Implement landing page `/pages/index.tsx` using `getStaticProps` reading `/site/data/episodes.json` and rendering `FeaturedCard` — file `/pages/index.tsx`
   - Goal: Provide SSG landing page that selects exactly one featured episode (tie-breaker newest publishDate).
   - Files: `/pages/index.tsx`, uses `/lib/episodes.ts`
   - Implementation notes: Use `getStaticProps` to call `getFeaturedEpisode()` (from T007). Render hero and `FeaturedCard`. Include meta via `MetaHead`.
@@ -194,7 +194,7 @@ Independent Test: Visit `/`, confirm a featured episode card with image/title/bl
     - [ ] Visiting `/` shows exactly one featured episode card
     - [ ] Play CTA on card opens Player and toggles playing state
 
-- [ ] T015 [US1] Add keyboard accessibility improvements to Play flow and add focus styles — modify files `/site/components/FeaturedCard.tsx`, `/site/components/Player.tsx`, `/site/styles/globals.css`
+- [x] T015 [US1] Add keyboard accessibility improvements to Play flow and add focus styles — modify files `/site/components/FeaturedCard.tsx`, `/site/components/Player.tsx`, `/site/styles/globals.css`
   - Goal: Ensure Play and View are keyboard navigable and visible focuses meet contrast.
   - Files: `/site/components/FeaturedCard.tsx`, `/site/components/Player.tsx`, `/site/styles/globals.css`
   - Implementation notes: Implement `onKeyDown` handling for Enter/Space; use `:focus-visible` styles; ensure aria-pressed for toggle controls.
@@ -229,7 +229,7 @@ Independent Test: Load `/episodes`, confirm dataset lists 20 items across pages 
 
 ### Implementation tasks (US2)
 
-- [ ] T017 [US2] Create `site/components/EpisodeCard.tsx` — file `/site/components/EpisodeCard.tsx`
+- [x] T017 [US2] Create `site/components/EpisodeCard.tsx` — file `/site/components/EpisodeCard.tsx`
   - Goal: Card used in list view with image, title, 2-line clamped description, tags, publishDate, duration, Play and View buttons.
   - Files: `/site/components/EpisodeCard.tsx`
   - Implementation notes: Ensure `alt` fallback for images and accessible buttons. Duration displayed in mm:ss or H:MM:SS. Use CSS line-clamp for description preview.
@@ -240,7 +240,7 @@ Independent Test: Load `/episodes`, confirm dataset lists 20 items across pages 
     - [ ] Card shows title, publishDate, duration and a Play button
     - [ ] Description is truncated to max 2 lines on narrow screens
 
-- [ ] T018 [P] [US2] Create `site/components/SearchBar.tsx` and `site/components/FiltersPanel.tsx` — files `/site/components/SearchBar.tsx`, `/site/components/FiltersPanel.tsx`
+- [x] T018 [P] [US2] Create `site/components/SearchBar.tsx` and `site/components/FiltersPanel.tsx` — files `/site/components/SearchBar.tsx`, `/site/components/FiltersPanel.tsx`
   - Goal: Provide client-side search (title/description) and multi-select tag filters (OR logic).
   - Files: `/site/components/SearchBar.tsx`, `/site/components/FiltersPanel.tsx`
   - Implementation notes: Debounce search input (150–300ms), expose `onChange` callbacks. FiltersPanel lists unique tags (derived from `getAllEpisodes()`).
@@ -251,7 +251,7 @@ Independent Test: Load `/episodes`, confirm dataset lists 20 items across pages 
     - [ ] Typing in search updates visible list within 500ms locally
     - [ ] Selecting a tag filters items to those containing any selected tag
 
-- [ ] T019 [US2] Create `site/components/Pagination.tsx` — file `/site/components/Pagination.tsx`
+- [x] T019 [US2] Create `site/components/Pagination.tsx` — file `/site/components/Pagination.tsx`
   - Goal: Numeric pagination controls (previous, next, page numbers) with accessible labels.
   - Files: `/site/components/Pagination.tsx`
   - Implementation notes: Default page size 10; expose `onPageChange(pageNumber)` callback. Ensure ARIA for current page.
@@ -262,7 +262,7 @@ Independent Test: Load `/episodes`, confirm dataset lists 20 items across pages 
     - [ ] Pagination indicates current page with aria-current
     - [ ] Clicking page number updates visible list
 
-- [ ] T020 [US2] Implement Episodes index page `/pages/episodes/index.tsx` with `getStaticProps` (SSG) and client-side hydration for search, filters, sort and pagination — file `/pages/episodes/index.tsx`
+- [x] T020 [US2] Implement Episodes index page `/pages/episodes/index.tsx` with `getStaticProps` (SSG) and client-side hydration for search, filters, sort and pagination — file `/pages/episodes/index.tsx`
   - Goal: Provide an SSG page that passes full episodes array (or minimal metadata) to client; client handles search, filter, sort, paginate.
   - Files: `/pages/episodes/index.tsx`
   - Implementation notes: Option A from plan: pre-render first page and pass full dataset for client-side features. Use `getStaticProps` to call `getAllEpisodes()`.
@@ -273,7 +273,7 @@ Independent Test: Load `/episodes`, confirm dataset lists 20 items across pages 
     - [ ] Page shows 20 episodes accessible across pages
     - [ ] Search + filter + sort operations update displayed items correctly
 
-- [ ] T021 [P] [US2] Accessibility touches: ensure FiltersPanel and Pagination are keyboard-only friendly and screen-reader announced changes — modify `/site/components/FiltersPanel.tsx`, `/site/components/Pagination.tsx`
+- [x] T021 [P] [US2] Accessibility touches: ensure FiltersPanel and Pagination are keyboard-only friendly and screen-reader announced changes — modify `/site/components/FiltersPanel.tsx`, `/site/components/Pagination.tsx`
   - Goal: Improve a11y: ARIA roles, live regions for filtered results count.
   - Files: `/site/components/FiltersPanel.tsx`, `/site/components/Pagination.tsx`, `/site/components/SearchBar.tsx`
   - Implementation notes: Use `aria-live="polite"` to announce result counts. Ensure buttons have aria-labels.
@@ -292,7 +292,7 @@ Goal: Provide About and FAQ pages reachable from the top nav.
 
 Independent Test: Nav contains About and FAQ; clicking them opens pages with spec-provided copy.
 
-- [ ] T022 [US3] Create `/pages/about.tsx` and `/pages/faq.tsx` with provided copy — files `/pages/about.tsx`, `/pages/faq.tsx`
+- [x] T022 [US3] Create `/pages/about.tsx` and `/pages/faq.tsx` with provided copy — files `/pages/about.tsx`, `/pages/faq.tsx`
   - Goal: Two static pages with the copy samples in spec.md (About paragraph, FAQ Q/As).
   - Files: `/pages/about.tsx`, `/pages/faq.tsx`
   - Implementation notes: Use `getStaticProps` only if necessary for metadata; otherwise static components are fine. Use `MetaHead` to set titles/descriptions.
@@ -300,10 +300,10 @@ Independent Test: Nav contains About and FAQ; clicking them opens pages with spe
   - Dependencies: T009
   - Success criteria: Pages render and are reachable from nav.
   - QA checklist:
-    - [ ] Visiting `/about` shows the sample paragraph
-    - [ ] Visiting `/faq` shows listed Q/A pairs
+    - [x] Visiting `/about` shows the sample paragraph
+    - [x] Visiting `/faq` shows listed Q/A pairs
 
-- [ ] T023 [US3] Add nav links and active state logic in `/site/components/Header.tsx`
+- [x] T023 [US3] Add nav links and active state logic in `/site/components/Header.tsx`
   - Goal: Ensure Header includes and highlights About and FAQ links and supports mobile collapse.
   - Files: `/site/components/Header.tsx`
   - Implementation notes: If header already created in T009, modify to include active class; add a simple mobile nav toggle.
@@ -311,10 +311,10 @@ Independent Test: Nav contains About and FAQ; clicking them opens pages with spe
   - Dependencies: T009, T022
   - Success criteria: Nav contains and highlights About and FAQ links.
   - QA checklist:
-    - [ ] Header shows About and FAQ links
-    - [ ] On mobile width, nav can collapse/expand (basic behavior)
+    - [x] Header shows About and FAQ links
+    - [x] On mobile width, nav can collapse/expand (basic behavior)
 
-- [ ] T024 [US3] Add meta titles and descriptions for About/FAQ using `/site/components/MetaHead.tsx`
+- [x] T024 [US3] Add meta titles and descriptions for About/FAQ using `/site/components/MetaHead.tsx`
   - Goal: Ensure About and FAQ pages have unique `title` and `description`.
   - Files: `/pages/about.tsx`, `/pages/faq.tsx`, `/site/components/MetaHead.tsx`
   - Implementation notes: Use MetaHead props to render page-specific meta tags.
@@ -322,8 +322,8 @@ Independent Test: Nav contains About and FAQ; clicking them opens pages with spe
   - Dependencies: T022, T009
   - Success criteria: Page head shows unique title/description for about and faq.
   - QA checklist:
-    - [ ] Page `title` differs between `/about` and `/faq`
-    - [ ] `meta[name="description"]` present on both pages
+    - [x] Page `title` differs between `/about` and `/faq`
+    - [x] `meta[name="description"]` present on both pages
 
 ---
 
@@ -331,7 +331,7 @@ Independent Test: Nav contains About and FAQ; clicking them opens pages with spe
 
 Goal: Implement episode detail pages, JSON-LD, alt text fallbacks, QA and CI.
 
-- [ ] T025 [US1] Implement episode detail page `/pages/episodes/[slug].tsx` using `getStaticPaths` + `getStaticProps` and include JSON-LD structured data — file `/pages/episodes/[slug].tsx`
+- [x] T025 [US1] Implement episode detail page `/pages/episodes/[slug].tsx` using `getStaticPaths` + `getStaticProps` and include JSON-LD structured data — file `/pages/episodes/[slug].tsx`
   - Goal: Static generation for all episode detail pages with full metadata and JSON-LD (PodcastEpisode / CreativeWork).
   - Files: `/pages/episodes/[slug].tsx`
   - Implementation notes: Use `getAllEpisodes()` to produce `paths`, `getEpisodeBySlug()` to pass props. Render `MetaHead` with JSON-LD script tag and `structuredData` prop or direct <script type="application/ld+json">.
@@ -339,10 +339,10 @@ Goal: Implement episode detail pages, JSON-LD, alt text fallbacks, QA and CI.
   - Dependencies: T007, T009
   - Success criteria: Each episode route builds and includes JSON-LD script with episode name, description, datePublished, duration, url, image.
   - QA checklist:
-    - [ ] `getStaticPaths` returns 20 slugs
-    - [ ] Visiting a detail page includes `<script type="application/ld+json">` with episode JSON-LD
+    - [x] `getStaticPaths` returns 20 slugs
+    - [x] Visiting a detail page includes `<script type="application/ld+json">` with episode JSON-LD
 
-- [ ] T026 [P] Ensure all images have alt text fallback in components — modify `/site/components/EpisodeCard.tsx`, `/site/components/FeaturedCard.tsx`
+- [x] T026 [P] Ensure all images have alt text fallback in components — modify `/site/components/EpisodeCard.tsx`, `/site/components/FeaturedCard.tsx`
   - Goal: Guarantee every `<img>` includes non-empty alt text; fallback to `Episode image: {title}` if `image` missing in data.
   - Files: `/site/components/EpisodeCard.tsx`, `/site/components/FeaturedCard.tsx`
   - Implementation notes: Centralize fallback logic in `lib/episodes.ts` or use helper `getAltText(episode)`.
@@ -350,10 +350,10 @@ Goal: Implement episode detail pages, JSON-LD, alt text fallbacks, QA and CI.
   - Dependencies: T012, T017
   - Success criteria: No image without alt in rendered DOM.
   - QA checklist:
-    - [ ] All images have `alt` attribute (scan DOM)
-    - [ ] Missing image uses `https://via.placeholder.com/1200x675` (plan fallback)
+    - [x] All images have `alt` attribute (scan DOM)
+    - [x] Missing image uses `https://via.placeholder.com/1200x675` (plan fallback)
 
-- [ ] T027 [P] Add data validation quick-check to build step: small Node script `/scripts/validate-episodes.js` and npm script `validate:data`
+- [x] T027 [P] Add data validation quick-check to build step: small Node script `/scripts/validate-episodes.js` and npm script `validate:data`
   - Goal: Fail early if episodes file is missing required fields or has bad duration format.
   - Files: `/scripts/validate-episodes.js`, update `/package.json` scripts
   - Implementation notes: Use `ajv` (optional) or lightweight checks to assert required fields per `episode.schema.json`. Normalize duration and log rows with problems.
@@ -361,10 +361,10 @@ Goal: Implement episode detail pages, JSON-LD, alt text fallbacks, QA and CI.
   - Dependencies: T007
   - Success criteria: Running `npm run validate:data` prints pass/fail and non-zero exit code on validation errors.
   - QA checklist:
-    - [ ] `npm run validate:data` exits 0 on current dataset
-    - [ ] Introduce a broken item and script exits non-zero (manual test)
+    - [x] `npm run validate:data` exits 0 on current dataset
+    - [x] Introduce a broken item and script exits non-zero (manual test)
 
-- [ ] T028 Add Lighthouse smoke script and README entry `/scripts/lighthouse-smoke.sh` and update `/README.md`
+- [x] T028 Add Lighthouse smoke script and README entry `/scripts/lighthouse-smoke.sh` and update `/README.md`
   - Goal: Provide a quick local smoke step to run Lighthouse checks for SEO/Accessibility for key pages.
   - Files: `/scripts/lighthouse-smoke.sh`, `/README.md`
   - Implementation notes: Use `lhci` or `npx lighthouse` in basic form; this is optional but recommended in plan.
@@ -372,10 +372,10 @@ Goal: Implement episode detail pages, JSON-LD, alt text fallbacks, QA and CI.
   - Dependencies: T014, T020, T025
   - Success criteria: Script runs and produces report/exit codes.
   - QA checklist:
-    - [ ] Script runs locally and produces minimal report
-    - [ ] README explains usage `npm run dev` then `./scripts/lighthouse-smoke.sh http://localhost:3000`
+    - [x] Script runs locally and produces minimal report
+    - [x] README explains usage `npm run dev` then `./scripts/lighthouse-smoke.sh http://localhost:3000`
 
-- [ ] T029 Add CI workflow to run `npm ci`, `npm run build`, `npm run test`, and validate data — file `.github/workflows/ci.yml`
+- [x] T029 Add CI workflow to run `npm ci`, `npm run build`, `npm run test`, and validate data — file `.github/workflows/ci.yml`
   - Goal: Provide basic CI to prevent regressions.
   - Files: `.github/workflows/ci.yml`
   - Implementation notes: GitHub Actions job that checks out code, installs Node, runs `npm ci`, `npm run validate:data`, `npm run build`, `npm run test`.
@@ -383,8 +383,8 @@ Goal: Implement episode detail pages, JSON-LD, alt text fallbacks, QA and CI.
   - Dependencies: T001, T002, T027
   - Success criteria: Workflow triggers on PR and runs steps successfully in green branch.
   - QA checklist:
-    - [ ] Workflow file present in `.github/workflows/`
-    - [ ] Sample run (or dry-run) shows build/test steps configured
+    - [x] Workflow file present in `.github/workflows/`
+    - [x] Sample run (or dry-run) shows build/test steps configured
 
 ---
 
@@ -392,7 +392,7 @@ Goal: Implement episode detail pages, JSON-LD, alt text fallbacks, QA and CI.
 
 Purpose: Final touches, documentation, performance, and handoff readiness.
 
-- [ ] T030 [P] Write short README section and `site/quickstart.md` documenting dev steps and feature constraints — file `/site/quickstart.md`, update `/README.md`
+- [x] T030 [P] Write short README section and `site/quickstart.md` documenting dev steps and feature constraints — file `/site/quickstart.md`, update `/README.md`
   - Goal: Provide reproducible setup steps referenced in plan.
   - Files: `/site/quickstart.md`, `/README.md`
   - Implementation notes: Include commands: `npm install`, `npm run dev`, `npm run build`, `npm run validate:data`, and local test instructions.
@@ -400,10 +400,10 @@ Purpose: Final touches, documentation, performance, and handoff readiness.
   - Dependencies: T001, T029
   - Success criteria: README includes clear dev/run/build instructions.
   - QA checklist:
-    - [ ] README commands are copy/pastable
-    - [ ] Quickstart explains where to find episodes.json and how to run validation
+    - [x] README commands are copy/pastable
+    - [x] Quickstart explains where to find episodes.json and how to run validation
 
-- [ ] T031 [P] Run a11y & unit test sweep and fix any high-priority accessibility issues — modify components as needed
+- [x] T031 [P] Run a11y & unit test sweep and fix any high-priority accessibility issues — modify components as needed
   - Goal: Run jest + axe checks and address critical a11y failures (focus/labels).
   - Files: `/tests/*`, `/site/components/*`
   - Implementation notes: Run `npm test` and fix issues; prefer small, focused fixes rather than heavy refactors.
@@ -411,8 +411,8 @@ Purpose: Final touches, documentation, performance, and handoff readiness.
   - Dependencies: T010, T011, T016, T021
   - Success criteria: No high-severity axe violations in core pages.
   - QA checklist:
-    - [ ] Unit-level axe checks pass for FeaturedCard and EpisodeCard
-    - [ ] Keyboard flows tested manually and recorded
+    - [x] Unit-level axe checks pass for FeaturedCard and EpisodeCard
+    - [x] Keyboard flows tested manually and recorded
 
 ---
 
